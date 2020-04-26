@@ -1,0 +1,55 @@
+public class BSTree {
+  
+class BSTNode {
+int data;
+BSTNode left, right;
+public BSTNode(int data) {
+this.data = data;
+left = right = null;
+}
+}
+BSTNode root;
+public BSTree() {
+root = null;
+}
+public void add(int x)
+{
+root = add(root,x);
+}
+private BSTNode add(BSTNode node, int x) {
+if(node == null) return new BSTNode(x);
+if(x < node.data) node.left = add(node.left,x);
+else node.right = add(node.right,x);
+return node;
+}
+@Override
+public String toString() {
+return "[" + toString(root) + "]";
+}
+private String toString(BSTNode node)
+{
+return node == null ? "" : toString(node.left) + " " +
+node.data + " " + toString(node.right);
+
+}
+ public static void printKMin ( BSTNode tree , int k ) 
+ {
+  while ( k==0) 
+  { 
+  public static void inOrder( BSTNode tree.root)
+  {
+  if(root !=  null) {
+   inOrder(root.left);
+   System.out.printf("%d ",root.data);
+   inOrder(root.right);
+   k--;
+  }
+  }
+  }
+}
+}
+
+
+
+
+

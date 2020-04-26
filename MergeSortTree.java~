@@ -1,0 +1,119 @@
+public class MergeSortTree
+{
+  public static void main(String[]args){
+    int [] arr1={2,6,11,5,9,8,7,3};
+     printArray(arr1);
+    printArray(merge3(arr1));
+    
+    
+  }
+  public static int[] merge3(int[]arr){
+    //stop condition
+    if(arr.length<=1) return arr;
+    //create 3 array 
+   
+      int [] left;
+      int[] right;
+      int[] midle;
+    
+    //if the length can be divided by 3 each array have the same size
+      if(arr.length%3==0){
+        int size=arr.length/3;
+        left=new int[size];
+        right=new int[size];
+        midle=new int[size];
+      }
+      // else the right is the smalest and the two first have the same size
+      else{
+        int size=arr.length/3;
+         left=new int[size+1];
+         midle=new int[size+1];
+         right=new int[arr.length-left.length-midle.length];
+      }
+      //fill the arrays 
+      for(int i=0;i<left.length;i++){
+        left[i]=arr[i];
+      }
+      for(int j=0;j<midle.length;j++){
+        midle[j]=arr[left.length+j];
+      } 
+       for(int k=0;k<right.length;k++){
+        right[k]=arr[left.length+midle.length+k];
+      }
+       return merge(merge3(left),merge3(midle),merge3(right));
+  }
+      
+
+
+public static int[] merge(int[] left,int[] midle,int[] right){
+  //create array with size of the 3 
+  int[] arr=new int[left.length+midle.length+right.length];
+  //merge and fill the arrays
+  for(int i=0,j=0,k=0;i<left.length||j<midle.length||k<right.length;){
+    
+    if(i==left.length && j==midle.length){
+      arr[i+j+k]=right[k];
+      k++;
+    }
+     else if(i==left.length && k==right.length){ 
+      arr[i+j+k]=midle[j];
+      j++;
+   }
+     else if(j==midle.length && k==right.length){ 
+       arr[i+j+k]=left[i];
+       i++;
+   }
+     else if(i==left.length && midle[j]<right[k]){
+       arr[i+j+k]=midle[j];
+       j++;
+   }
+    else if(i==left.length && midle[j]>right[k]){
+       arr[i+j+k]=right[k];
+       k++;
+   }
+    else if(j==midle.length && left[i]<right[k]){
+      arr[i+j+k]=left[i];
+      i++;
+    }
+    else if(j==midle.length && left[i]>right[k]){
+      arr[i+j+k]=right[k];
+      k++;
+    }
+   else  if(k==right.length && midle[j]<left[i]){
+     arr[i+j+k]=midle[j];
+     j++;
+     }
+   else  if(k==right.length && midle[j]>left[i]){
+     arr[i+j+k]=left[i];
+     i++;
+     }
+    
+    
+   else if(left[i]<right[k]&&left[i]<midle[j]){
+      arr[i+j+k]=left[i];
+      i++;
+    }
+   else  if(left[i]>right[k]&&right[k]<midle[j]){
+      arr[i+j+k]=right[k];
+      k++;
+    }
+   else  {
+      arr[i+j+k]=midle[j];
+      j++;
+    }
+  }
+  return arr;
+}
+public static void printArray(int[] arr){
+  for(int i=0;i<arr.length;i++){ 
+    System.out.print(arr[i]+", ");
+  }
+  System.out.println();
+}
+}
+/*
+*complexity of the code is nlog(n)
+* log(n) because the first algorithme divide the array until his sise is one 
+* the second algorithme build back my array and sort him in complexity of n 
+*/
+  

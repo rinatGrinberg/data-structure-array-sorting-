@@ -1,0 +1,70 @@
+public class Queue1 
+{ 
+  public class Queue { 
+    int [] data ; 
+    int top ;
+    int rear ;
+    int size ;
+     public Queue () 
+     { this.top= -1;
+       this.tear=-1; 
+      
+     }
+     public Queue( int rear, int top) 
+     {
+     this.top = top; 
+     this.rear = rear; 
+     size++;  
+     }
+      public void insert ( int mun ) 
+     { 
+        if ( top==-1 ) 
+        { 
+       this.data[++top]=num;
+       size++;
+       rear=top
+     }else
+     { 
+         if(top==0 && rear ==data.length) 
+         return System.out.println("the queue is full");
+      } 
+     }else
+     {
+       if ( top >0 && rear==data.length ) 
+       { 
+         rear =(rear+1)% data.length;
+       
+     data[++rear]=num;
+     size++
+       
+       }
+     }
+     public int remove () 
+     { 
+       if (top == -1)
+       return System.out.println("the queue is empty");
+       else{
+          return this.data[top++];
+         
+       
+       {
+        
+         
+         
+         
+     
+     
+     
+     
+ 
+         
+         
+         
+         
+         
+       
+      }
+       
+       
+      public static void main (String[] args)
+        
